@@ -9,94 +9,94 @@
 </head>
 
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="index.html">
+        <img src="Branding/Rectangle Logo.png" width="112" height="28">
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
         <a class="navbar-item" href="index.html">
-          <img src="Branding/Rectangle Logo.png" width="112" height="28">
+          Home
         </a>
-    
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-    
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="index.html">
-            Home
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Men's Snowboards
           </a>
 
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              Men's Snowboards
+          <div class="navbar-dropdown">
+            <a class="navbar-item" id="mens-powder" onclick="change_view(this.id);">
+              Powder
             </a>
-    
-            <div class="navbar-dropdown">
-              <a class="navbar-item" id="mens-powder" onclick="change_view(this.id);">
-                Powder
-              </a>
-              <a class="navbar-item" id="mens-park" onclick="change_view(this.id);">
-                Park & Freestyle
-              </a>
-              <a class="navbar-item" id="mens-all-mountain" onclick="change_view(this.id);">
-                All Mountain
-              </a>
-            </div>
-          </div>
-
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              Women's Snowboards
+            <a class="navbar-item" id="mens-park" onclick="change_view(this.id);">
+              Park & Freestyle
             </a>
-    
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                Powder
-              </a>
-              <a class="navbar-item">
-                Park & Freestyle
-              </a>
-              <a class="navbar-item">
-                All Mountain
-              </a>
-            </div>
+            <a class="navbar-item" id="mens-all-mountain" onclick="change_view(this.id);">
+              All Mountain
+            </a>
           </div>
-    
-          <a class="navbar-item" id="bindings" onclick="change_view(this.id);">
-            Bindings
-          </a>
-
-          <a class="navbar-item" id="helmets" onclick="change_view(this.id);">
-            Helmets
-          </a>
-
-          <a class="navbar-item" id="goggles" onclick="change_view(this.id);">
-            Goggles
-          </a>
-
-          <a class="navbar-item" id="gloves" onclick="change_view(this.id);">
-            Gloves
-          </a>
-    
         </div>
-    
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-light">
-                Log in
-              </a>
-              <a class="button is-link">
-                <strong>Sign up</strong>
-              </a>
-            </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Women's Snowboards
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              Powder
+            </a>
+            <a class="navbar-item">
+              Park & Freestyle
+            </a>
+            <a class="navbar-item">
+              All Mountain
+            </a>
+          </div>
+        </div>
+
+        <a class="navbar-item" id="bindings" onclick="change_view(this.id);">
+          Bindings
+        </a>
+
+        <a class="navbar-item" id="helmets" onclick="change_view(this.id);">
+          Helmets
+        </a>
+
+        <a class="navbar-item" id="goggles" onclick="change_view(this.id);">
+          Goggles
+        </a>
+
+        <a class="navbar-item" id="gloves" onclick="change_view(this.id);">
+          Gloves
+        </a>
+
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-light" id="login_button">
+              Log in
+            </a>
+            <a class="button is-link" id="signup_button">
+              <strong>Sign up</strong>
+            </a>
           </div>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
   <!-- Different code from below will be inserted to this div depending on what navbar item is clicked on -->
   <div id="page_content">
@@ -139,10 +139,70 @@
     </div>
   </section>
 
-  <!-- Hero footer: Empty because we use a unversal footer for all pages instead -->
-  <div class="hero-foot">
+  <!-- SIGN UP MODAL -->
+  <div class="modal" id="signup_modal">
+    <div class="modal-background" id="signup_background"></div>
+    <div class="modal-content p-6 has-background-white-ter">
+      <img src="Branding/Logo Square.png" alt="Logo" width="15%" height="15%"
+        style="  display: block; margin-left: auto; margin-right: auto;">
+      <h3 class="title is-3 has-text-centered">Sign Up</h3>
+      <h6 class="subtitle is-5 has-text-centered">Get access to the best available prices and more by signing up for a
+        Shifty Snowboards account</h6>
+      <div class="field">
+        <p class="control">
+          <input class="input" type="email" placeholder="Email">
+        </p>
+      </div>
+      <div class="field">
+        <p class="control">
+          <input class="input" type="password" placeholder="Password">
+        </p>
+      </div>
+      <div class="field is-grouped">
+        <p class="control">
+          <button class="button is-link">
+            <strong>Sign-up</strong>
+          </button>
+        </p>
+        <p class="control">
+          <button class="button is-light" id="cancel_signup">
+            Cancel
+          </button>
+        </p>
+      </div>
+    </div>
 
-  </div>
+  <!-- LOG IN MODAL -->
+  <div class="modal" id="login_modal">
+    <div class="modal-background" id="login_background"></div>
+    <div class="modal-content p-6 has-background-white-ter">
+      <img src="Branding/Logo Square.png" alt="Logo" width="15%" height="15%"
+        style="  display: block; margin-left: auto; margin-right: auto;">
+      <h3 class="title is-3 has-text-centered">Log In</h3>
+      <h6 class="subtitle is-5 has-text-centered">Already have an account with us? Log in here for access to the best deals in snowboarding.</h6>
+      <div class="field">
+        <p class="control">
+          <input class="input" type="email" placeholder="Email">
+        </p>
+      </div>
+      <div class="field">
+        <p class="control">
+          <input class="input" type="password" placeholder="Password">
+        </p>
+      </div>
+      <div class="field is-grouped">
+        <p class="control">
+          <button class="button is-link">
+            <strong>Log in</strong>
+          </button>
+        </p>
+        <p class="control">
+          <button class="button is-light" id="cancel_login">
+            Cancel
+          </button>
+        </p>
+      </div>
+    </div>
 
   <!-- MEN'S POWDER PAGE -->
   <div class="is-hidden" id="mens-powder_desc">
@@ -2605,7 +2665,7 @@
 </body>
 
 <!-- FOOTER -->
-<footer class="footer">
+<footer class="footer" id="footer_">
   <div class="content has-text-centered">
     <img src="Branding/Rectangle Logo.png" alt="Logo" width="15%" height="15%" style="margin: 20 auto;">
     <p>
