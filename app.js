@@ -2,7 +2,7 @@
 // This function is called when the user clicks one of the links on the navbar
 function change_view(id) {
     document.getElementById("page_content").innerHTML = document.getElementById(id + "_desc").innerHTML;
-    document.getElementById("index").className = "is-hidden"; //Hide home page so it doesn't appear below current page
+    document.getElementById("homepage").className = "is-hidden"; //Hide home page so it doesn't appear below current page
 
 }
 
@@ -13,7 +13,10 @@ let signup_modal = document.querySelector("#signup_modal");
 let signup_background = document.querySelector("#signup_background");
 let cancel_signup = document.querySelector("#cancel_signup");
 
-footer_.className = "footer";
+// TEMP DEBUGGING
+console.log("footer classlist length = " + footer_.classList.length);
+console.log("first footer class = " + footer_.classList.item(0));
+console.log("second footer class = " + footer_.classList.item(1));
 
 // Display the modal when the sign up button is clicked
 signup_button.addEventListener("click", () => {
