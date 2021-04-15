@@ -44,7 +44,7 @@ let cancel_login = document.querySelector("#cancel_login");
 
 // Display the modal when the log-in button is clicked
 login_button.addEventListener("click", () => {
-    signinModal.classList.add("is-active");
+    login_modal.classList.add("is-active");
     footer_.classList.add("is-hidden");
 })
 
