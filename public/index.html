@@ -1,89 +1,2687 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<html lang="en">
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/8.4.1/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/8.4.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/8.4.1/firebase-database.js"></script>
-    <script defer src="/__/firebase/8.4.1/firebase-firestore.js"></script>
-    <script defer src="/__/firebase/8.4.1/firebase-functions.js"></script>
-    <script defer src="/__/firebase/8.4.1/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/8.4.1/firebase-storage.js"></script>
-    <script defer src="/__/firebase/8.4.1/firebase-analytics.js"></script>
-    <script defer src="/__/firebase/8.4.1/firebase-remote-config.js"></script>
-    <script defer src="/__/firebase/8.4.1/firebase-performance.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <title>Shifty: Snowboard Hub</title>
+</head>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="index.html">
+        <img src="Branding/Rectangle Logo.png" width="112" height="28">
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="index.html">
+          Home
+        </a>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Men's Snowboards
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item" id="mens-powder" onclick="change_view(this.id);">
+              Powder
+            </a>
+            <a class="navbar-item" id="mens-park" onclick="change_view(this.id);">
+              Park & Freestyle
+            </a>
+            <a class="navbar-item" id="mens-all-mountain" onclick="change_view(this.id);">
+              All Mountain
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Women's Snowboards
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              Powder
+            </a>
+            <a class="navbar-item">
+              Park & Freestyle
+            </a>
+            <a class="navbar-item">
+              All Mountain
+            </a>
+          </div>
+        </div>
+
+        <a class="navbar-item" id="bindings" onclick="change_view(this.id);">
+          Bindings
+        </a>
+
+        <a class="navbar-item" id="helmets" onclick="change_view(this.id);">
+          Helmets
+        </a>
+
+        <a class="navbar-item" id="goggles" onclick="change_view(this.id);">
+          Goggles
+        </a>
+
+        <a class="navbar-item" id="gloves" onclick="change_view(this.id);">
+          Gloves
+        </a>
+
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-light" id="login_button">
+              Log in
+            </a>
+            <a class="button is-link" id="signup_button">
+              <strong>Sign up</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Different code from below will be inserted to this div depending on what navbar item is clicked on -->
+  <div id="page_content">
+
+  </div>
+
+  <!-- HOME PAGE -->
+  <section class="hero is-fullheight header-image"
+    style="background-image: url('Misc Images/ShreddingPow.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;"
+    id="homepage">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <img src="Branding/Logo Square.png" alt="Logo" width="128" height="128">
+        <!-- Outline text trick from https://stackoverflow.com/questions/11323813/how-to-outline-text-in-html-css-->
+        <p class="title is-size-1" style="    color: black;
+        text-shadow:
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;">
+          Welcome to the Shifty Snowboard Hub
+        </p>
+        <p class="subtitle" style="    color: black;
+        text-shadow:
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;">
+          The one-stop shop for all your snowboarding needs.
+        </p>
+
+        <!-- Adding space so the text doesn't overlap with the snowboarder in the background image (there is probably a better way to do this)-->
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGN UP MODAL -->
+  <div class="modal" id="signup_modal">
+    <div class="modal-background" id="signup_background"></div>
+    <div class="modal-content p-6 has-background-white-ter">
+      <img src="Branding/Logo Square.png" alt="Logo" width="15%" height="15%"
+        style="  display: block; margin-left: auto; margin-right: auto;">
+      <h3 class="title is-3 has-text-centered">Sign Up</h3>
+      <h6 class="subtitle is-5 has-text-centered">Get access to the best available prices and more by signing up for a
+        Shifty Snowboards account</h6>
+      <form id="signup_form">
+        <div class="field">
+          <p class="control">
+            <input class="input" type="email" placeholder="Email">
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <input class="input" type="password" placeholder="Password">
+          </p>
+        </div>
+        <div class="field is-grouped">
+          <p class="control">
+            <button class="button is-link">
+              <strong>Sign-up</strong>
+            </button>
+          </p>
+          <p class="control">
+            <button class="button is-light" id="cancel_signup">
+              Cancel
+            </button>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- LOG IN MODAL -->
+  <div class="modal" id="login_modal">
+    <div class="modal-background" id="login_background"></div>
+    <div class="modal-content p-6 has-background-white-ter">
+      <img src="Branding/Logo Square.png" alt="Logo" width="15%" height="15%"
+        style="  display: block; margin-left: auto; margin-right: auto;">
+      <h3 class="title is-3 has-text-centered">Log In</h3>
+      <h6 class="subtitle is-5 has-text-centered">Already have an account with us? Log in here to read and write
+        reviews, find deals, and more.</h6>
+      <form id="login_form">
+        <div class="field">
+          <p class="control">
+            <input class="input" type="email" placeholder="Email">
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <input class="input" type="password" placeholder="Password">
+          </p>
+        </div>
+        <div class="field is-grouped">
+          <p class="control">
+            <button class="button is-link">
+              <strong>Log in</strong>
+            </button>
+          </p>
+          <p class="control">
+            <button class="button is-light" id="cancel_login">
+              Cancel
+            </button>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MEN'S POWDER PAGE -->
+  <div class="is-hidden" id="mens-powder_desc">
+    <!-- Hero -->
+    <section class="hero is-link">
+      <div class="hero-body">
+        <p class="title has-text-centered">
+          Men's Powder Snowboards
+        </p>
+        <p class="subtitle has-text-centered">
+          Great for floating down the mountain in deep snow.
+        </p>
+        <br>
+        <p class="subtitle is-size-7 has-text-centered">
+          Price info and descriptions from evo.com
+        </p>
+      </div>
+    </section>
+
+    <!-- Snowboards -->
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered is-variable is-multiline">
+
+          <!-- Arbor Crosscut Camber -->
+          <div class="column is-4-desktop">
+            <a href="https://www.arborcollective.com/products/crosscut-camber-21">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Powder/Arbor Crosscut Camber.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Arbor Crosscut Camber</p>
+                      <p class="subtitle is-6">Stiff with a System Camber</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The Arbor Crosscut Camber Snowboard has a slightly setback stance and dialed-up
+                    turning radius for improved control when the world starts to get speed blurs and the
+                    consequences get a little higher. There will be plenty to look at while you leave
+                    ski patrol in the dust thanks to a beautiful hand-dyed ash powerply that's as
+                    gorgeous as any top shelf acoustic guitar, except playing with the Arbor Crosscut
+                    Rocker Snowboard creates masterpieces every time.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          Directional
+                        </td>
+                        <td class="has-text-weight-light">
+                          Camber
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="20" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="75" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$479.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Bataleon Camel Two -->
+          <div class="column is-4-desktop">
+            <a href="https://bataleon.com/products/bataleon-camel-two-snowboard-2020-2021?">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Powder/Bataleon Camel Two.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Bataleon Camel Two</p>
+                      <p class="subtitle is-6">Directional Freeriding Pro</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The Bataleon Camel Two Snowboard has a chargy new directional shape, with a boxy
+                    tapered tip and a 3D profile. Loaded up with all of Bataleon s top of the line
+                    materials and a lightweight core, it floats in the pow and attacks the steeps in any
+                    conditions. For versatile, directional freeriding, the Camel Two is number one.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          Directional
+                        </td>
+                        <td class="has-text-weight-light">
+                          Camber
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="67" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="77" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$499.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Burton Deep Thinker -->
+          <div class="column is-4-desktop">
+            <a href="https://www.burton.com/us/en/p/mens-burton-deep-thinker-camber-snowboard/W21-172001.html">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Powder/Burton Deep Thinker.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Burton Deep Thinker</p>
+                      <p class="subtitle is-6">Extra Poppy, Pow-Friendly Performance</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Adding the float and responsiveness of Directional Camber to a unique shape designed
+                    with Balanced Freeride Geometry and just a touch of taper ups the all-mountain
+                    abilities while keeping the freestyle performance on full blast. 45° Carbon
+                    Highlights deliver snappy pop without the stiff side effects.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          Directional
+                        </td>
+                        <td class="has-text-weight-light">
+                          Rocker/Camber
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="33" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="77" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$599.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Dinosaurs Will Die Pow Reaper -->
+          <div class="column is-4-desktop">
+            <a href="https://dinosaurswilldie.com/2021-pow-reaper/">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Powder/DWD Pow Reaper.jpg">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Dinosaurs Will Die Pow Reaper</p>
+                      <p class="subtitle is-6">Updated Camber Profile, Redesigned for 2021</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The Pow Reaper has a long, tapered, directional shape with a rockered nose and a
+                    slight camber
+                    line running right through the tail, giving it more float and more bite. It surfs,
+                    cuts, and slashes with ease, leaving trenched-out
+                    wastelands in its wake.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          Directional
+                        </td>
+                        <td class="has-text-weight-light">
+                          Rocker/Camber
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="50" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="70" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$424.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Moss Snowstick Performance Quad 54 -->
+          <div class="column is-4-desktop">
+            <a href="http://www.mosssnowstick.com/2020-2021/performance-quad-54">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Powder/Moss Snowstick.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Moss Snowstick Performance Quad 54</p>
+                      <p class="subtitle is-6">Surf-inspired Snowboarding</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Surf inspired from the base up. The Performance Quad Series is concepted and
+                    designed with the soul of surfboard shaping in mind. The spooned out convex nose
+                    helps in delivering a smoother contact and fast acceleration in all snow conditions
+                    while producing desired buttery float.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          Directional
+                        </td>
+                        <td class="has-text-weight-light">
+                          Rocker/Camber
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="45" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="90" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$1,155.00</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Never Summer Insta/Gator -->
+          <div class="column is-4-desktop">
+            <a href="https://www.neversummer.com/shop/snowboards/mens-protosynthesis/">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Powder/Never Summer InstaGator.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Never Summer Proto Synthesis</p>
+                      <p class="subtitle is-6">Perfectly Balanced C3 Camber</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    A certified spin machine, the Never Summer Insta/Gator Snowboard features a snappy
+                    ride that holds rails like a well-seasoned locomotive. It's made with a 12mm taper
+                    and massive surface area with a Fusion Rocker Camber for nimble transitions and
+                    serious stability in every condition.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          Directional
+                        </td>
+                        <td class="has-text-weight-light">
+                          Camber/Rocker/Camber
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="60" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="55" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$412.49</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- MEN'S PARK PAGE -->
+  <div class="is-hidden" id="mens-park_desc">
+    <!-- Hero -->
+    <section class="hero is-link">
+      <div class="hero-body">
+        <p class="title has-text-centered">
+          Men's Park and Freestyle Snowboards
+        </p>
+        <p class="subtitle has-text-centered">
+          The best boards to hit rails and jump lines.
+        </p>
+        <br>
+        <p class="subtitle is-size-7 has-text-centered">
+          Price info and descriptions from evo.com
+        </p>
+      </div>
+    </section>
+
+    <!-- Snowboards -->
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered is-variable is-multiline">
+
+          <!-- Bataleon Wallie -->
+          <div class="column is-4-desktop">
+            <a href="https://bataleon.com/products/bataleon-wallie-snowboard-2020-2021?">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Park/Bataleon Wallie.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Bataleon Wallie</p>
+                      <p class="subtitle is-6">Triple Base Technology with Sidekick</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    With thick, stubby, skate inspired WallieTips, this jib board was bred for the park,
+                    and if rails are your jam, then your friends will be jelly when they see you on this
+                    pad of butter. It pops and it plays, it spins and it slashes.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          True Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Camber
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="90" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="60" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$449.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Capita The Outsiders -->
+          <div class="column is-4-desktop">
+            <a href="https://capitasnowboarding.com/products/the-outsiders">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Park/Capita The Outsiders.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Capita The Outsiders</p>
+                      <p class="subtitle is-6">The Speed You Need for Big Jumps</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    While many park boards feature flat or reverse camber underfoot to help you butter
+                    around, The Outsiders runs a traditional positive camber for almost the entire
+                    length of the board, with small flat sections just before the tip and tail. The
+                    result is a confidence inspiring board that loves speed and stomps landings on the
+                    biggest jumps.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          True Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Flat/Camber/Flat
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="45" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="75" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$499.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Dinosaurs Will Die Rat -->
+          <div class="column is-4-desktop">
+            <a href="https://dinosaurswilldie.com/2021-rat/">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Park/DWD Rat.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Dinosaurs Will Die Rat</p>
+                      <p class="subtitle is-6">A Harley Rip with RePop Camber</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The Rat board is packed with the power of RePop camber, letting you throttle an
+                    ollie onto or over anything you desire. And if you want to sit back and cruise, this
+                    board is an easy ride through the park or anywhere else you decide to take it.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          True Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Rocker/Flat/Rocker
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="50" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="55" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$359.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- GNU Head Space -->
+          <div class="column is-4-desktop">
+            <a href="https://www.gnu.com/head-space">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Park/GNU Headspace.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">GNU Head Space</p>
+                      <p class="subtitle is-6">Park Asym Twin by Forest Bailey</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The C3 Head Space is Forest Bailey's asymmetric twin camber shred fantasy balanced
+                    and
+                    brought to life.
+                    A proven street slayer, it rips any freestyle situation you might encounter at your
+                    home
+                    mountain or out
+                    there.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          Asymmetrical, True Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Camber/Rocker/Camber
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="50" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="75" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$499.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Lib Tech Box Knife -->
+          <div class="column is-4-desktop">
+            <a href="https://www.lib-tech.com/box-knife">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Park/Lib Tech Box Knife.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Lib Tech Box Knife</p>
+                      <p class="subtitle is-6">Perfectly Balanced C3 Camber</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Powered by Lib's aggressive and capable C3 hybrid camber, the Lib Tech Box Knife C3
+                    Snowboard has the power and pop you crave, the precision you need when the trees
+                    start to blur, and the versatility to take you from the summit, through the park,
+                    and zooming past slowskis on the groomers.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          True Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Camber/Rocker/Camber
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="40" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="85" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$499.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Never Summer Proto Synthesis -->
+          <div class="column is-4-desktop">
+            <a href="https://www.neversummer.com/shop/snowboards/mens-protosynthesis/">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Park/Never Summer Proto Synthesis.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Never Summer Proto Synthesis</p>
+                      <p class="subtitle is-6">Perfectly Balanced C3 Camber</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    With a lively build backed up by Never Summer s new Shockwave Rocker Camber profile,
+                    the Proto Synthesis is one of the bounciest all-mountain twins on the mountain. The
+                    Shock Wave profile features a small rockered section for turnability nestled in
+                    between two huge camber areas under the bindings.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          True Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Camber/Rocker/Camber
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="35" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="65" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$609.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Rome Artifact -->
+          <div class="column is-4-desktop">
+            <a href="https://romesnowboards.com/products/artifact-snowboard-2020-2021">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Park/Rome Artifact.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Rome Artifact</p>
+                      <p class="subtitle is-6">Revamped with DoubleKick for 2021</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    A stable, predictable core paired with a powerful camber shape has heaps of pop,
+                    tons of response, and enough forgiveness to give you the confidence to keep on going
+                    and learn your next new trick. You don't need to be an archaeologist to unearth what
+                    makes the Rome Artifact Snowboard so much fun for riders of all skill levels.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          True Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Rocker/Flat/Rocker
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="70" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="65" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$399.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Rossignol District -->
+          <div class="column is-4-desktop">
+            <a href="https://www.rossignol.com/us/rejwp06-000.html">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Park/Rossignol District.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Rossignol District</p>
+                      <p class="subtitle is-6">A Great Place to Start</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Every rider has to start somewhere, and there's no better springboard to success
+                    than the Rossignol District Snowboard. It's built with Auto Turn Rocker for
+                    effortlessly catch free turns, and a forgiving flex pattern that makes it easy to
+                    maneuver in the park and beyond. With a poppy, energetic wood core and durable
+                    construction to protect against dings and scrapes, it won't take long to hone your
+                    skills to perfection.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          True Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Rocker/Camber/Rocker
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="80" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="10" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$349.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Salomon Huck Knife -->
+          <div class="column is-4-desktop">
+            <a href="https://www.salomon.com/en-us/shop/product/huck-knife-20.html#color=22669">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's Park/Salomon Huck Knife.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Salomon Huck Knife</p>
+                      <p class="subtitle is-6">A Tried and True Classic</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The Salomon Huck Knife Snowboard is a tried and true park board with a classic twin
+                    shape, smooth medium flex, and blunted tip and tail. It presses well and has tons of
+                    energy on the rebound thanks to the super cambered shape and carbon inlayed
+                    Slingshot Sidewalls. It has a fast sintered base to achieve max takeoff speed and
+                    rip around on the groomers in between park laps.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          True Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Rocker/Camber/Rocker
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="67" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="45" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$449.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- MEN'S ALL MOUNTAIN PAGE -->
+  <div class="is-hidden" id="mens-all-mountain_desc">
+    <!-- Hero -->
+    <section class="hero is-link">
+      <div class="hero-body">
+        <p class="title has-text-centered">
+          Men's All-Mountain Snowboards
+        </p>
+        <p class="subtitle has-text-centered">
+          The best do-it-all boards for riding anywhere you can find snow.
+        </p>
+        <br>
+        <p class="subtitle is-size-7 has-text-centered">
+          Price info and descriptions from evo.com
+        </p>
+      </div>
+    </section>
+
+    <!-- Snowboards -->
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered is-variable is-multiline">
+
+          <!-- Bataleon Whatever -->
+          <div class="column is-4-desktop">
+            <a href="https://bataleon.com/products/bataleon-whatever-snowboard-2020-2021?">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's All Mountain/Bataleon Whatever.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Bataleon Whatever</p>
+                      <p class="subtitle is-6">Go Everywhere with Triple Base Technology</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Whatever the terrain, whatever the conditions, the Whatever does it all with ease.
+                    Blending Twin 3BT™ with a directional twin outline, this board will perform great in
+                    the park or on the deepest powder days.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          Directional Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Camber
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="45" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value=45 max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$479.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Dinosaurs Will Die NeverNot -->
+          <div class="column is-4-desktop">
+            <a href="https://bataleon.com/products/bataleon-camel-two-snowboard-2020-2021?">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's All Mountain/DWD Never Not.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Dinosaurs Will Die NeverNot</p>
+                      <p class="subtitle is-6">Freeriding With Some Features</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    You're never not up for a good time, never not down to try new tricks and scope new
+                    lines.
+                    This directional freestyle board will take you all over the mountain in any
+                    conditions, just make sure you keep it happy with a steady diet of side hits,
+                    kickers, and windlips.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          Directional Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Camber
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="33" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="67" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$431.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- GNU The Finest C2 -->
+          <div class="column is-4-desktop">
+            <a href="https://www.evo.com/snowboards/gnu-the-finest-c2-snowboard">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's All Mountain/GNU The Finest.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">GNU The Finest C2</p>
+                      <p class="subtitle is-6">A Smooth Ride With Extra Pop</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    This Max Warbington designed freestyle deck rides smoother than a Rolls Royce and
+                    has more pop than a bottle of Dom Perignon. Magne-Traction® technology ensures
+                    caviar carves in any snow, and it's built with an asymmetric design that helps
+                    compensate for the body's natural mechanics in a heel-side turn.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          Asymmetrical, True Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Camber/Rocker/Camber
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="30" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="60" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$499.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- K2 x Jeremy Dean Afterblack -->
+          <div class="column is-4-desktop">
+            <a href="https://k2snow.com/en-us/K2XJD">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's All Mountain/K2 Afterblack.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">K2 x Jeremy Dean Afterblack</p>
+                      <p class="subtitle is-6">Updated Camber Profile, Redesigned for 2021</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    As the most versatile board in K2's freestyle line, the Afterblack is ready to serve
+                    double duty as an all-mountain play machine and all-round park destroyer, with Twin
+                    Combination Camber for no limits riding wherever you find yourself on the mountain.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          True Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Rocker/Camber/Rocker
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="50" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="55" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$373.96</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Rome Agent -->
+          <div class="column is-4-desktop">
+            <a href="https://romesnowboards.com/products/agent-snowboard-2020-2021">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's All Mountain/Rome Agent.webp">
+                  </figure>
+                </div>
+                <div class=" card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Rome Agent78</p>
+                      <p class="subtitle is-6">Versatile and Durable, Ready for Anything</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Hop on the super-versatile Rome Agent Snowboard and put the days of being held
+                    back
+                    by your board behind you. Fusion camber, a do-it-all flex, and the ability to
+                    ride
+                    switch with predictability of board feel means the Rome Agent Snowboard gives
+                    you
+                    the green light for sending as hard as you can.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          Directional Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Rocker/Camber/Rocker
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="60" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="25" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$386.96</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Sims Distortion -->
+          <div class="column is-4-desktop">
+            <a href="https://www.simscollective.com/w20-21/distortion">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Boards/Men's All Mountain/Sims Distortion.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Sims Distortion</p>
+                      <p class="subtitle is-6">The All-Mountain Assassin</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Lightweight construction paired with Transform Camber gives you a nimble ride that
+                    holds its own at high speeds, along with a loose, pressable flex that kills it in
+                    the park and beyond. If you want to push your limits this season, pick up the Sims
+                    Distortion Snowboard.
+                    <br>
+                  </div>
+
+                  <table class="table is-bordered is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>
+                          Shape
+                        </th>
+                        <th>
+                          Rocker Type
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="has-text-weight-light">
+                          True Twin
+                        </td>
+                        <td class="has-text-weight-light">
+                          Rocker/Flat/Rocker
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="70" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="40" max="100"></progress>
+                </div>
+                <p class="title is-4 has-text-centered has-text-link">$450.00</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- BINDINGS PAGE -->
+  <div class="is-hidden" id="bindings_desc">
+    <!-- Hero -->
+    <section class="hero is-link">
+      <div class="hero-body">
+        <p class="title has-text-centered">
+          Snowboard Bindings
+        </p>
+        <p class="subtitle has-text-centered">
+          Stay strapped or get clapped!
+        </p>
+        <br>
+        <p class="subtitle is-size-7 has-text-centered">
+          Price info and descriptions from evo.com
+        </p>
+      </div>
+    </section>
+
+    <!-- Bindings -->
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered is-variable is-multiline">
+
+          <!-- Arbor Hemlock -->
+          <div class="column is-4-desktop">
+            <a href="https://www.arborcollective.com/collections/bindings/products/hemlock-gray-20">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Bindings/Arbor Hemlock.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Arbor Hemlock</p>
+                      <p class="subtitle is-6">Softer Freestyle Bindings</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The Hemlock is perfect for park laps, urban assaults, and all-skill-level resort
+                    shredding. The exclusive System X Baseplate transfers rider input to a snowboard so
+                    effectively that Arbor was able to create a softer freestyle, all-mountain design
+                    that delivers surprisingly responsive performance and comfort.
+                    <br>
+                  </div>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="20" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="75" max="100"></progress>
+
+                  <span class="tag is-link">System X Baseplate</span>
+                  <span class="tag is-link">Asymmetrical Highbacks</span>
+                  <span class="tag is-link">Bow-Strap Adjuster</span>
+                  <span class="tag is-link">Cast Aluminum Buckles and Levers</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$209.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Burton Lexa X -->
+          <div class="column is-4-desktop">
+            <a href="https://www.burton.com/us/en/p/womens-burton-lexa-x-est-snowboard-binding/W21-222331.html">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Bindings/Burton Lexa X.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Burton Lexa X</p>
+                      <p class="subtitle is-6">Robust, Light, and Responsive</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The Strata has quickly become one of Union's most popular freestyle binding models
+                    and the reason is clear-- Dialed Dampening. Layers of Thermoformed EVA, Duraflex ST
+                    Nylon and Fused Vaporlite combine to provide the most vibration canceling ride
+                    you've ever experienced.
+                    <br>
+                  </div>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="50" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="60" max="100"></progress>
+
+                  <span class="tag is-link">Re:Flex™ Binding System</span>
+                  <span class="tag is-link">Zero-Lean Canted Hi-Back Design</span>
+                  <span class="tag is-link">Asym Hammockstrap™</span>
+                  <span class="tag is-link">Double Take Buckles with Insta-Click</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$299.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Flux DS -->
+          <div class="column is-4-desktop">
+            <a href="https://www.flux-bindings.com/products/ds/">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Bindings/Flux DS.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Flux DS</p>
+                      <p class="subtitle is-6">The Ultimate Binding for the Park</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Every detail is tuned for the freestyle-inclined ripper, with flat rocker Ultima
+                    Bases to ensure natural board flex, and Resistor Highbacks that deliver the
+                    stability and power you need to launch into huge kickers but have enough give to let
+                    you butter, tweak and grab with ease.
+                    <br>
+                  </div>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="60" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="70" max="100"></progress>
+
+                  <span class="tag is-link">Adjustable Toe & Heel Cushion</span>
+                  <span class="tag is-link">Resistor Highback</span>
+                  <span class="tag is-link">Waffle Strap</span>
+                  <span class="tag is-link">Beer Buckles</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$275.00</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Ride C-8 -->
+          <div class="column is-4-desktop">
+            <a href="https://ridesnowboards.com/en-us/p/c-8-snowboard-bindings">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Bindings/Ride C-8.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Ride C-8</p>
+                      <p class="subtitle is-6">The Ultimate Binding for the Park</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    This season, Ride introduces a fully refreshed binding lineup with elegant
+                    nomenclature to boot. C-8 for carbon, 8 flex, the Ride C-8 Snowboard Bindings are
+                    Ride s mid-stiff men's binding for strong riding in all conditions. For men looking
+                    for top tier performance in a lightweight carbon chassis, the C-8 is the answer.
+                    <br>
+                  </div>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="15" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="90" max="100"></progress>
+
+                  <span class="tag is-link">C-Series Performance Chassis</span>
+                  <span class="tag is-link">Slimeback™ Highback</span>
+                  <span class="tag is-link">Reversible Ankle Strap</span>
+                  <span class="tag is-link">Linkage Ratchet</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$299.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Rome Crux -->
+          <div class="column is-4-desktop">
+            <a href="https://romesnowboards.com/products/crux-snowboard-bindings-2020-2021">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Bindings/Rome Crux.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Rome Crux</p>
+                      <p class="subtitle is-6">Minimalist Style, Maximum Freestyle</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The fan-favorite Crux is a minimalist style binding for riders who want to maximize
+                    every day on hill. With a super pressable highback complemented by the loose, surfy
+                    flex of PureFlex ankle and PureGrip toe straps, the Rome Crux is everything you need
+                    to lap the park with ease and nothing you don’t.
+                    <br>
+                  </div>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="50" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="60" max="100"></progress>
+
+                  <span class="tag is-link">AsymWrap Platform</span>
+                  <span class="tag is-link">Highback Rotation</span>
+                  <span class="tag is-link">PureFlex Ankle Strap</span>
+                  <span class="tag is-link">PureGrip Toe Strap</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$239.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Union Strata -->
+          <div class="column is-4-desktop">
+            <a href="https://unionbindingcompany.com/products/strata?variant=32609279082601">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Bindings/Union Strata.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Union Strata</p>
+                      <p class="subtitle is-6">Layered Precision</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The Strata has quickly become one of Union's most popular freestyle binding models
+                    and the reason is clear-- Dialed Dampening. Layers of Thermoformed EVA, Duraflex ST
+                    Nylon and Fused Vaporlite combine to provide the most vibration canceling ride
+                    you've ever experienced.
+                    <br>
+                  </div>
+
+                  <p class="is-size-6 has-text-weight-medium">Flex (low to high)</p>
+                  <progress class="progress is-link is-small" value="50" max="100"></progress>
+
+                  <p class="is-size-6 has-text-weight-medium">Skill level (beginner to advanced)</p>
+                  <progress class="progress is-link is-small" value="60" max="100"></progress>
+
+                  <span class="tag is-link">Stage 6 Baseplate</span>
+                  <span class="tag is-link">Strata Highback</span>
+                  <span class="tag is-link">Hexgrip Toe Strap with Secure Lock</span>
+                  <span class="tag is-link">Magnesium Buckles</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$299.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- GOGGLES PAGE -->
+  <div class="is-hidden" id="goggles_desc">
+    <!-- Hero -->
+    <section class="hero is-link">
+      <div class="hero-body">
+        <p class="title has-text-centered">
+          Snowboard (and Ski) Goggles
+        </p>
+        <p class="subtitle has-text-centered">
+          It's important to be able to see the features, and a good set of goggles will help a lot on both sunny
+          and snowy days.
+        </p>
+        <br>
+        <p class="subtitle is-size-7 has-text-centered">
+          Price info and descriptions from evo.com
+        </p>
+      </div>
+    </section>
+
+    <!-- Goggles -->
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered is-variable is-multiline">
+
+          <!-- Dragon PXV -->
+          <div class="column is-4-desktop">
+            <a href="https://www.dragonalliance.com/pxv-goggles">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Goggles/Dragon PXV.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Dragon PXV</p>
+                      <p class="subtitle is-6">A New Level of Visibility</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The new Dragon PXV Goggles bring a new standard to the goggle market. Panotech
+                    lenses feature a unique toric lens curvature that'll bring your visibility to a
+                    whole new level. Also featuring Lumalens® optimized color tints, Super Anti-Fog
+                    treatment, and face swaddling triple-layer face foam, these goggles cover all the
+                    bases you'd expect from a company like Dragon The ultimate goggle for the ultimate
+                    shredding experience.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Patented Frameless Technology</span>
+                  <span class="tag is-link">100% UV Protection</span>
+                  <span class="tag is-link">Super Anti-Fog Technology</span>
+                  <span class="tag is-link">LUMALENS® Optimized Colors</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$132.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Giro Article -->
+          <div class="column is-4-desktop">
+            <a href="https://www.giro.com/p/article-snow-goggles/350030000700000019.html">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Goggles/Giro Article.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Giro Article</p>
+                      <p class="subtitle is-6">Full of Features</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The Giro Article Goggles are loaded to the rafters with good stuff - a semi-framless
+                    EXV base with triple layer face foam and helmet compatibility starts things off,
+                    while the set of toric, spherical Zeiss lenses cover your bases for absolute clarity
+                    in almost any light conditions. Strap on the Giro Article Goggles and rip line after
+                    tasty line, whether it's bluebird, greybird or downright blizzarding.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Expansion View (EXV) Frame</span>
+                  <span class="tag is-link">VIVID Lens by Zeiss</span>
+                  <span class="tag is-link">Anti-Fog Coating </span>
+                  <span class="tag is-link">EVAK Vent Technology</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$127.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Marker Squadron -->
+          <div class="column is-4-desktop">
+            <a href="https://www.marker.net/en-us/products/goggles/squadron/">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Goggles/Marker Squadron.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Marker Squadron</p>
+                      <p class="subtitle is-6">Futuristic Frameless Style</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Zipping down the hill wearing the Marker Squadron Goggles feels like looking through
+                    the windshield of a stealth fighter jet as you prey on the landscape. The MarkAIR
+                    vent system keeps your lenses fog-free and the NMT Optics 3rd Eyelid repels dirt and
+                    grime for lasting clarity. The Superfit frame design with triple layer face foam
+                    fits your face like a glove.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Superfit Frame Design</span>
+                  <span class="tag is-link">XDry Triple Layer Face Foam</span>
+                  <span class="tag is-link">Magnetic Lens</span>
+                  <span class="tag is-link">MarkAIR Vent System</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$143.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Oakley Flight Tracker XL -->
+          <div class="column is-4-desktop">
+            <a href="https://www.oakley.com/en-us/product/W0OO7104S?variant=888392459336">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Goggles/Oakley Flight Tracker XL.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Oakley Flight Tracker XL</p>
+                      <p class="subtitle is-6">For Snow and Overcast Conditions</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Low-profile frame design meets a
+                    massive Prizm™ lens tuned for sharp, high contrast vision in any light conditions,
+                    and triple layer polar fleece foam offers all day comfort and wearability. Sized to
+                    fit larger faces with an optimized field-of-view in all directions, the Flight
+                    Tracker XL will have you seeing your line clearer than ever.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Low-Profile Frame Design</span>
+                  <span class="tag is-link">Prizm™ Lens</span>
+                  <span class="tag is-link">Interchangeable Lens</span>
+                  <span class="tag is-link">Glasses Compatible </span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$43.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Salomon S​/Max  -->
+          <div class="column is-4-desktop">
+            <a href="https://www.salomon.com/en-us/shop/men/protective/goggles/s-max.html">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Goggles/Salomon SMax.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Salomon S​/Max</p>
+                      <p class="subtitle is-6">Premium Goggles With an Expansive Field of View</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The Salomon S/Max Goggles give you maximum field of vision, maximum breathability,
+                    and a custom face-fit that feels like home. The Twin Lock System lets you easily
+                    swap lenses so you can make the most of the conditions. The spherical lens offers
+                    full UV protection while the adjustable silicone strap provides a secure fit around
+                    your helmet and over your eyes. When you're ready to make the switch to premier
+                    goggles, go with the Salomon S/Max.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">100% UV Cut</span>
+                  <span class="tag is-link">Extra Low Light Lens Included</span>
+                  <span class="tag is-link">Silicone-Backed Strap</span>
+                  <span class="tag is-link">Microfiber Goggle Bag</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$176.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- SPY Legacy -->
+          <div class="column is-4-desktop">
+            <a href="https://www.spyoptic.com/goggles/snow/all-goggles/legacy-snow-goggle/313483.html">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Goggles/SPY Legacy.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">SPY Legacy</p>
+                      <p class="subtitle is-6">Ideal for Backcountry Exploration</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Spy is going back to their roots with the Spy Legacy Goggles. The retro strap and
+                    huge, spherical lens ensure that you look good and see clearly, too. Two lens
+                    options are included, utilizing Spy s Happy Lens™ technology to enhance color and
+                    contrast and harness long-wave blue light, which has been shown to have all sorts of
+                    mood benefits.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Helmet Friendly</span>
+                  <span class="tag is-link">Happy Lens™ Color Enhancing</span>
+                  <span class="tag is-link">100% UV Protection</span>
+                  <span class="tag is-link">Lock Steady™ System</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$172.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- HELMETS PAGE -->
+  <div class="is-hidden" id="helmets_desc">
+    <!-- Hero -->
+    <section class="hero is-link">
+      <div class="hero-body">
+        <p class="title has-text-centered">
+          Snowboard (and Ski) Helmets
+        </p>
+        <p class="subtitle has-text-centered">
+          Snowboarding is a dangerous sport, take the proper precautions!
+        </p>
+        <br>
+        <p class="subtitle is-size-7 has-text-centered">
+          Price info and descriptions from evo.com
+        </p>
+      </div>
+    </section>
+
+    <!-- Helmets -->
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered is-variable is-multiline">
+
+          <!-- Anon Highwire -->
+          <div class="column is-4-desktop">
+            <a href="https://www.arborcollective.com/collections/bindings/products/hemlock-gray-20">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Helmets/Anon Highwire.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Anon Highwire</p>
+                      <p class="subtitle is-6">Brimmed Style and Hassle-Free Fit</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The sleek, low-profile design includes fixed vents for consistent air flow and
+                    fog-free goggles. The auto-adjust fit offers a snug, perfect fit every time, and the
+                    Fidlock® magnetic helmet strap buckle allows for easy one-hand operation, even with
+                    gloves. The expedition fleece liner and ear pads offer maximum warmth and
+                    moisture-wicking comfort.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Endura-Shell ABS Construction</span>
+                  <span class="tag is-link">Passive Ventilation</span>
+                  <span class="tag is-link">Auto-Adjust Fit System</span>
+                  <span class="tag is-link">Fidlock® Snap Helmet Buckle</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$87.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Giro Zone -->
+          <div class="column is-4-desktop">
+            <a href="https://www.giro.com/p/zone-mips-snow-helmet/200000001600000038.html">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Helmets/Giro Zone.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Giro Zone</p>
+                      <p class="subtitle is-6">Freestyle-Focused Helmet with MIPS</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The Zone MIPS® features innovative Hybrid Construction, which combines the
+                    ding-resistant durability of a Hard Shell upper with the lighter weight of In-Mold
+                    Construction lower and sidewalls. The Zone MIPS is packed with amenities including
+                    the In Form 2 Fit System; a quick-fit Vertical Tuning adjustment system for proper
+                    helmet positioning; MIPS technology; fully adjustable venting; Fidlock magnetic
+                    buckle closure; and a sleek, integrated POV camera mount.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Multi-Directional Impact Protection System</span>
+                  <span class="tag is-link">Stack Ventilation</span>
+                  <span class="tag is-link">In Form™ 2 Fit System</span>
+                  <span class="tag is-link">Fidlock® Magnetic Buckle Closure</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$164.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Marker Clark -->
+          <div class="column is-4-desktop">
+            <a href="https://www.marker.net/en/products/helmets/clark/">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Helmets/Marker Clark.jpg">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Marker Clark</p>
+                      <p class="subtitle is-6">Lightweight Freeride Helmet</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The Clark features lightweight in-mold construction and a dial-fit system for
+                    on-the-go fit adjustments that you'll barely notice. Plus, the Clark is beanie ready
+                    and features a Fidlock buckle for an easy to use, extra-comfortable helmet you can
+                    count on.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Air Jam Climate Control</span>
+                  <span class="tag is-link">Removable Earpads</span>
+                  <span class="tag is-link">360° Edge Protection</span>
+                  <span class="tag is-link">Audio Ready</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$98.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Oakley MOD 5 -->
+          <div class="column is-4-desktop">
+            <a href="https://www.oakley.com/en-us/product/99430MP">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Helmets/Oakley MOD 5.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Oakley MOD 5</p>
+                      <p class="subtitle is-6">The Full Package</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Built to provide top level protection and high performance comfort to those that
+                    push the envelope of possibility, the MOD 5 features a lightweight Hybrid Shell
+                    construction, adjustable ventilation, and a quickly customizable Boa® fit system --
+                    not to mention the revolutionary impact protection of MIPS technology.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Dual-Construction Hybrid Shell</span>
+                  <span class="tag is-link">Adjustable Venting</span>
+                  <span class="tag is-link">No Pressure Ear Cup</span>
+                  <span class="tag is-link">MIPS</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$240.00</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- POC Auric Cut Backcountry SPIN -->
+          <div class="column is-4-desktop">
+            <a href="https://www.pocsports.com/products/auric-cut-backcountry-spin">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Helmets/POC Auric.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">POC Auric Cut Backcountry SPIN</p>
+                      <p class="subtitle is-6">Setting a New Standard</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The hefty ABS shell uses an EPP liner that better retains it's shape after impacts
+                    for longer lasting protection. New for the Cut is POC s SPIN technology that uses
+                    specially crafted shearing pads to reduce the effects of an oblique impact. With mad
+                    internal padding, on-the-fly adjustable venting, and audio compatibility, the POC
+                    Auric Cut Helmet is exactly what is sounds like, it's the cut.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Robust ABS Shell</span>
+                  <span class="tag is-link">Adjustable Ventilation</span>
+                  <span class="tag is-link">Detachable Ear Pads</span>
+                  <span class="tag is-link">Removable Goggle Clip</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$164.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Smith Optics Maze -->
+          <div class="column is-4-desktop">
+            <a href="https://www.pocsports.com/products/auric-cut-backcountry-spin">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Helmets/Smith Maze MIPS.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Smith Optics Maze</p>
+                      <p class="subtitle is-6">Lightweight and Dependable</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Don't be fooled by its minimalist facade, the Maze MIPS brings leading-edge safety
+                    tech to the forefront thanks to an in-mold profile that fuses a polycarbonate shell
+                    with an absorbent EPS liner. Plus, the Maze integrates the MIPS System: a low
+                    friction layer designed to reduce rotational forces during wipeouts. These sweet
+                    features paired with streamlined Airflow Climate vents and bragging rights as one of
+                    the world's lightest snow helmets on the market today make the Smith Maze MIPS
+                    Helmet a no-brainer.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Lightweight In-Mold Construction</span>
+                  <span class="tag is-link">AirEvac Ventilation</span>
+                  <span class="tag is-link">Self-Adjusting Lifestyle Fit System</span>
+                  <span class="tag is-link">MIPS System Equipped</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$119.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+        </div>
+    </section>
+  </div>
+
+  <!-- GLOVES PAGE -->
+  <div class="is-hidden" id="gloves_desc">
+    <!-- Hero -->
+    <section class="hero is-link">
+      <div class="hero-body">
+        <p class="title has-text-centered">
+          Snowboard Gloves
+        </p>
+        <p class="subtitle has-text-centered">
+          Whether it's grabbing your board, the tow-rope, or the chairlift, a good set of gloves (or mittens) are
+          critical.
+        </p>
+        <br>
+        <p class="subtitle is-size-7 has-text-centered">
+          Price info and descriptions from evo.com
+        </p>
+      </div>
+    </section>
+
+    <!-- Gloves -->
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered is-variable is-multiline">
+
+          <!-- Black Diamond Spark -->
+          <div class="column is-4-desktop">
+            <a href="https://www.amazon.com/Black-Diamond-Spark-Gloves-Weather/dp/B00LFL6K5W">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Gloves/Black Diamond Spark Gloves.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Black Diamond Spark</p>
+                      <p class="subtitle is-6">The King of Comfort</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Available in a variety of awesome colors, this lightweight glove is waterproof and
+                    made from durable and grippy goat leather. The stretchy neoprene cuff and tricot
+                    lining are stretchy, comfortable, and soft to the touch.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Goat Leather Shell Material</span>
+                  <span class="tag is-link">Fixed Brushed Tricot Lining</span>
+                  <span class="tag is-link">EVA Foam on Back of Hand</span>
+                  <span class="tag is-link">Neoprene Cuff</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$55.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Burton Gore-Tex -->
+          <div class="column is-4-desktop">
+            <a href="https://www.burton.com/us/en/p/burton-gore-tex-glove-%2B-gore-warm-technology/W17-103531.html">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Gloves/Burton Gore-Tex.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Burton GORE-TEX</p>
+                      <p class="subtitle is-6">Versatile, Systematic Stormproofing</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    More than any other part of your riding kit, gloves have the most contact with the
+                    elements. With that in mind, pros choose the bestselling Burton GORE-TEX® Glove.
+                    DRYRIDE Durashell™ 2L fabric, and a GUARANTEED TO KEEP YOU DRY® GORE-TEX® membrane
+                    protect this Thermacore™ insulated glove from downright rugged winter conditions.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">DRYRIDE 2‑Layer Fabric</span>
+                  <span class="tag is-link">GORE-TEX Waterproof</span>
+                  <span class="tag is-link">Thermacore™ Insulation</span>
+                  <span class="tag is-link">Sticky Icky™ Grip Palm</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$79.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Dakine Titan GORE-TEX -->
+          <div class="column is-4-desktop">
+            <a href="https://www.dakine.com/products/titan-glove">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Gloves/Dakine Titan.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Dakine Titan GORE-TEX</p>
+                      <p class="subtitle is-6">Gauntlet Style Waterproofing</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The gauntlet style shell of the Titan Glove is water repellent and durable, and the
+                    GORE-TEX insert with Gore Warm adds warmth and waterproofing. A removable Storm
+                    Liner glove is touch screen compatible, so you can keep up with your crew without
+                    any of that pesky frostbite ruining your plans, and it's a lot easier to dry gloves
+                    out after a long day, or give them a much needed cleaning.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Rubbertec Palm</span>
+                  <span class="tag is-link">Removable Elastic Wrist Leash</span>
+                  <span class="tag is-link">Removable Storm Liner Glove</span>
+                  <span class="tag is-link">One Hand Cinch Gauntlet</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$52.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Burton Prospect Mittens -->
+          <div class="column is-4-desktop">
+            <a href="https://www.burton.com/us/en/p/mens-burton-prospect-mitten/W20-103811.html">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Gloves/Burton Prospect Mittens.jpg">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Burton Prospect Mittens</p>
+                      <p class="subtitle is-6">Waterproof and Extra-Breathable</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    The Burton Prospect Mittens perform when your riding has something to prove. Stay
+                    warm to the core thanks to Thermacore™ insulation that keeps you toasty without
+                    crushing your digits. A waterproof DRYRIDE membrane keeps moisture outside where it
+                    belongs so you can keep the gnar factor high and still stay dry.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">DRYRIDE 2‑Layer Fabric</span>
+                  <span class="tag is-link">DRYRIDE 2‑Layer Fabric</span>
+                  <span class="tag is-link">Screen Grab Toughgrip™ Palm</span>
+                  <span class="tag is-link">Removable Wrist Leash</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$43.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Ride Fury Mitts -->
+          <div class="column is-4-desktop">
+            <a href="https://www.evo.com/mittens/ride-fury-mitts#image=189726/774195/ride-fury-mitts-.jpg">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Gloves/Ride Fury Mitts.jpg">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Ride Fury Mitts</p>
+                      <p class="subtitle is-6">Waterproof and Extra-Breathable</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Thanks to the ample insulation and waterproofing in your Ride Fury Mitts, your
+                    digits are blazing despite the bitter cold and swirling winds. With a nice velcro
+                    cuff and individual finger slots inside, these mitts will keep you going when the
+                    temperatures plummet.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">Waterproof-Breathable Goat Leather</span>
+                  <span class="tag is-link">Synthetic Insulation</span>
+                  <span class="tag is-link">Individual Finger Slots</span>
+                  <span class="tag is-link">Adjustable Velcro Tab</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$34.99</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          <!-- The North Face II Solo Futurelight -->
+          <div class="column is-4-desktop">
+            <a href="https://www.thenorthface.com/shop/il-solo-futurelight-glove-nf0a4sgd">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by4">
+                    <img src="Gear/Gloves/The North Face II Solo.webp">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">The North Face II Solo Futurelight</p>
+                      <p class="subtitle is-6">Ideal for Backcountry Exploration</p>
+                    </div>
+                  </div>
+                  <div class="content has-text-weight-light">
+                    Athletes love the The North Face II Solo Futurelight Gloves. And what's not to love?
+                    Well, they're made of leather, but it's the
+                    FUTURELIGHT waterproof-breathable membrane that really takes them to the next level,
+                    not to mention the warm insulation and baby soft lining. These gloves are game for
+                    anything - inbounds or out.
+                    <br>
+                  </div>
+
+                  <span class="tag is-link">FUTURELIGHT™ Membrane</span>
+                  <span class="tag is-link">Water-resistant Goat Leather</span>
+                  <span class="tag is-link">Adjustable Wrist Strap</span>
+                  <span class="tag is-link">Etip™ Functionality for Touchscreen</span>
+                  <br>
+
+                </div>
+
+                <p class="title is-4 has-text-centered has-text-link">$119.95</p>
+                <!-- Empty paragraph to create a tiny page break -->
+                <p></p>
+              </div>
+            </a>
+          </div>
+
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  </div>
+</body>
+
+<!-- FOOTER -->
+<footer class="footer" id="footer_">
+  <div class="content has-text-centered">
+    <img src="Branding/Rectangle Logo.png" alt="Logo" width="15%" height="15%" style="margin: 20 auto;">
+    <p>
+      <small>For support, or to report a website issue, please contact <strong>ekarabas@wisc.edu</strong></small>
+    </p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+
 </html>
