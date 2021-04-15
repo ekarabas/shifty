@@ -2,4 +2,5 @@ Firebase troubleshooting:
 If getting the error about scripts being disabled, run this command in console: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 To post current version to firebase:
-firebase init
+firebase init (if new directory)
+firebase deploy
