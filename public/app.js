@@ -58,3 +58,28 @@ cancel_login.addEventListener("click", () => {
     login_modal.classList.remove("is-active");
     footer_.classList.remove("is-hidden");
 });
+
+// User signup process (inspired from example in class)
+let signup_form = document.querySelector("#signup_form");
+
+signup_form.addEventListener("submit", (e => {
+    e.preventDefault //Prevent page refresh
+
+    let email = document.querySelector("#email_").value;
+    let password = document.querySelector("#password_").value;
+
+    // Sign in the user with firebase
+    firebase.auth.signInWithEmailAndPassword(email, password).then((userCredentials) => {
+        console.log(userCredentials.user.email + " with the id " + userCredentials.user.uid + " is logged in.");
+
+        // Exit modal, reset form
+        signup_modal.classList.remove("is-acive");
+        signup_form.reset();
+    })
+
+    // Catch errors and alert user
+    .catch((error) => {
+        let login_error = document.querySelector("#login_error");
+        login_error.innerHTML = `<p>Login failed: ${error.message}</p>`;
+    })
+}))
