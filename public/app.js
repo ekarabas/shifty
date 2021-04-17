@@ -6,17 +6,38 @@ function change_view(id) {
 
 }
 
+// Adjust end of navbar depending on whether or not user is logged in
+let loggedoutlinks = document.querySelectorAll(".logged_out");
+let loggedinlinks = document.querySelectorAll(".logged_in");
+
+// Inspired from example in class
+function configureNav(user) {
+  // If a user is passed, that means someone is signed in
+  if(user) {
+    loggedinlinks.forEach((link) => {
+      link.classList.remove("is-hidden");
+    })
+    loggedoutlinks.forEach((link) => {
+      link.classList.add("is-hidden");
+    })
+
+  }
+  else {
+    loggedinlinks.forEach((link) => {
+        link.classList.add("is-hidden");
+      })
+      loggedoutlinks.forEach((link) => {
+        link.classList.remove("is-hidden");
+      })
+  }
+}
+
 // Sign up modal (inspired by example from class)
 let footer_ = document.querySelector("#footer_");
 let signup_button = document.querySelector("#signup_button");
 let signup_modal = document.querySelector("#signup_modal");
 let signup_background = document.querySelector("#signup_background");
 let cancel_signup = document.querySelector("#cancel_signup");
-
-// TEMP DEBUGGING
-console.log("footer classlist length = " + footer_.classList.length);
-console.log("first footer class = " + footer_.classList.item(0));
-console.log("second footer class = " + footer_.classList.item(1));
 
 // Display the modal when the sign up button is clicked
 signup_button.addEventListener("click", () => {
@@ -59,27 +80,73 @@ cancel_login.addEventListener("click", () => {
     footer_.classList.remove("is-hidden");
 });
 
-// User signup process (inspired from example in class)
+// User sign-up process (inspired from example in class)
 let signup_form = document.querySelector("#signup_form");
+let logged_in_as = document.querySelector("#logged_in_as")
 
-signup_form.addEventListener("submit", (e => {
-    e.preventDefault //Prevent page refresh
+signup_form.addEventListener("submit", (e) => {
+    e.preventDefault(); //Prevent page refresh
+  
+    let email = document.querySelector("#signup_email").value;
+    let password = document.querySelector("#signup_password").value;
 
-    let email = document.querySelector("#email_").value;
-    let password = document.querySelector("#password_").value;
+    // Create the user in the firebase DB
+    auth.createUserWithEmailAndPassword(email, password).then(()=> {
+
+      // Exit modal, reset form
+      signup_modal.classList.remove("is-active");
+      signup_form.reset();
+    })
+    .catch((error) => {
+      let signup_error = document.querySelector("#signup_error");
+      signup_error.innerHTML = `<p>Sign-up failed: ${error.message}</p>`;
+    })
+  })
+
+
+// User log in process (inspired from example in class)
+let login_form = document.querySelector("#login_form");
+
+login_form.addEventListener("submit", (e) => {
+    e.preventDefault(); //Prevent page refresh
+
+    let email = document.querySelector("#login_email").value;
+    let password = document.querySelector("#login_password").value;
 
     // Sign in the user with firebase
-    firebase.auth.signInWithEmailAndPassword(email, password).then((userCredentials) => {
-        console.log(userCredentials.user.email + " with the id " + userCredentials.user.uid + " is logged in.");
+    auth.signInWithEmailAndPassword(email, password)
+        .then((userCredentials) => {
+            console.log(userCredentials.user.email + " with the id " + userCredentials.user.uid + " is logged in.");
 
-        // Exit modal, reset form
-        signup_modal.classList.remove("is-acive");
-        signup_form.reset();
-    })
+            // Exit modal, reset form
+            login_modal.classList.remove("is-active");
+            login_form.reset();
+        })
 
-    // Catch errors and alert user
-    .catch((error) => {
-        let login_error = document.querySelector("#login_error");
-        login_error.innerHTML = `<p>Login failed: ${error.message}</p>`;
-    })
-}))
+        // Catch errors and alert user
+        .catch((error) => {
+            let login_error = document.querySelector("#login_error");
+            login_error.innerHTML = `<p>Login failed: ${error.message}</p>`;
+        })
+})
+
+// User log out process
+let logout_button = document.querySelector("#logout_button");
+
+// Log out the user when the "log out" button is pressed
+logout_button.addEventListener("click", () => {
+  auth.signOut()
+})
+
+// Check if user is logged in or out and update the navbar accordingly
+auth.onAuthStateChanged(function(user) { 
+    // If user is passed, then someone is signed in
+    if(user) {
+      configureNav(user);
+      logged_in_as.innerHTML += `Logged in as ${user.email}`;
+    }
+    else {
+      configureNav();
+    }
+    }
+  )
