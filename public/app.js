@@ -42,6 +42,8 @@ function configureNav(user) {
   }
 }
 
+
+
 // Sign up modal (inspired by example from class)
 let footer_ = document.querySelector("#footer_");
 let signup_button = document.querySelector("#signup_button");
@@ -149,6 +151,7 @@ logout_button.addEventListener("click", () => {
 })
 
 // Check if user is logged in or out and update the navbar accordingly
+// This should be at the end of the js file
 auth.onAuthStateChanged(function (user) {
   // If user is passed, then someone is signed in
   if (user) {
@@ -159,19 +162,32 @@ auth.onAuthStateChanged(function (user) {
   }
 })
 
-
-// Posting reviews
+// Posting reviews, this function is called when the user clicks the "Post Review" button
 function open_review_modal() {
+  // Oddly, these aren't working if defined above the function declaration, so I'm declaring them within the function
   let review_no_login = document.querySelector("#review_no_login");
+  let review_modal = document.querySelector("#review_modal");
   
   if (someone_is_logged_in()) {
     // If someone is logged in, display the menu for creating a review
-    console.log("somebody logged in");
-    review_no_login.innerHTML += "congrats youre logged in!";
+    review_modal.classList.add("is-active");
   }
   else {
     // Tell the user they have to log in before posting a review
-    console.log("nobody logged in");
     review_no_login.innerHTML = `You must be logged in to post reviews!`;
   }
 }
+
+// Exiting the review form by clicking background
+let review_background = document.querySelector("#review_background");
+let review_modal = document.querySelector("#review_modal");
+review_background.addEventListener("click", () => {
+  review_modal.classList.remove("is-active");
+})
+
+// Exiting the review form by clicking the "Discard" button
+let discard_review = document.querySelector("#discard_review");
+discard_review.addEventListener("click", (e) => {
+  e.preventDefault();
+  review_modal.classList.remove("is-active");
+})

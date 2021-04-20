@@ -2688,6 +2688,71 @@
     </section>
   </div>
 
+  <!-- BOARD REVIEW MODAL -->
+  <div class="modal" id="review_modal">
+    <div class="modal-background" id="review_background"></div>
+    <div class="modal-content p-6 has-background-white-ter">
+      <img src="Branding/Logo Square.png" alt="Logo" width="15%" height="15%"
+        style="  display: block; margin-left: auto; margin-right: auto;">
+      <h3 class="title is-3 has-text-centered">Review a Snowboard</h3>
+      <h6 class="subtitle is-5 has-text-centered">Help other riders make informed decisions by leaving your feedback!
+      </h6>
+      <form id="signup_form">
+        <div class="field">
+          <label class="label">Nickname</label>
+          <p class="control pb-2">
+            <input class="input" type="text" placeholder="The name that will appear on your review" id="nickname">
+          </p>
+        </div>
+        <div class="field">
+          <label class="label">Snowboard Model</label>
+          <p class="control pb-2">
+            <input class="input" type="text" placeholder="Which board are you reviewing? (ex: Burton Ripcord 2021)"
+              id="snowboard_model">
+          </p>
+        </div>
+        <div class="field">
+          <label class="label">Snowboard Size</label>
+          <p class="control pb-2">
+            <input class="input" type="text" placeholder="What is the size of your board? (ex: 154W)"
+              id="snowboard_size">
+          </p>
+        </div>
+        <label class="label">Rating (5 stars being excellent)</label>
+        <div class="select pb-2">
+          <select>
+            <option>1 Star</option>
+            <option>2 Stars</option>
+            <option>3 Stars</option>
+            <option>4 Stars</option>
+            <option>5 Stars</option>
+          </select>
+        </div>
+        <br>
+        <br>
+        <label class="label">Review</label>
+        <p class="control pb-5">
+          <textarea class="textarea" placeholder="What are your thoughts about the board?"></textarea>
+        </p>
+        <div class="field is-grouped">
+          <p class="control">
+            <button class="button is-link">
+              <strong>Submit</strong>
+            </button>
+          </p>
+          <p class="control">
+            <button class="button is-light" id="discard_review">
+              Discard
+            </button>
+          </p>
+        </div>
+        <div class="has-text-danger" id="review_error">
+          <!-- If signup fails, error message will be displayed here -->
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- BOARD REVIEWS PAGE -->
   <div class="is-hidden" id="reviews_desc">
     <!-- Hero -->
@@ -2710,7 +2775,7 @@
         </div>
         <!-- Will tell the user that a login is required for posting reviews, if the user isn't logged in -->
         <p class="has-text-centered has-text-white" id="review_no_login">
-          
+
         </p>
       </div>
     </section>
