@@ -81,6 +81,10 @@
           Gloves
         </a>
 
+        <a class="navbar-item" id="reviews" onclick="change_view(this.id);">
+          Board Reviews
+        </a>
+
       </div>
 
       <div class="navbar-end">
@@ -2683,6 +2687,75 @@
       </div>
     </section>
   </div>
+
+  <!-- BOARD REVIEWS PAGE -->
+  <div class="is-hidden" id="reviews_desc">
+    <!-- Hero -->
+    <section class="hero is-link">
+      <div class="hero-body">
+        <p class="title has-text-centered">
+          Snowboard Reviews
+        </p>
+        <p class="subtitle has-text-centered">
+          Share your experiences with other riders. Let's help each other find the perfect deck.
+        </p>
+        <br>
+        <div class="buttons is-centered">
+          <p class="control">
+            <!-- Using a function to detect a click on this button because addEventListener wasn't working -->
+            <button class="button is-light has-text-link" id="review_button" onclick="open_review_modal();">
+              Post a Review
+            </button>
+          </p>
+        </div>
+        <!-- Will tell the user that a login is required for posting reviews, if the user isn't logged in -->
+        <p class="has-text-centered has-text-white" id="review_no_login">
+          
+        </p>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered is-variable is-multiline">
+
+          <!-- Example Review -->
+          <div class="column is-4-desktop">
+            <div class="card">
+              <div class="card-image">
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <p class="title is-4 has-text-centered">Board Title</p>
+                    <p class="subtitle is-6 has-text-weight-light has-text-centered">154W</p>
+                    <img src="Misc Images/5 Stars.png">
+                  </div>
+                </div>
+                <br>
+                <div class="content">
+                  <p class="title is-4">Loved this board!</p>
+                  <p class="subtitle is-6 has-text-weight-light">Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit. Dolores, possimus praesentium accusantium
+                    molestias quod error a maxime tenetur officiis recusandae ullam placeat labore dolorem fuga quos
+                    quam
+                    sed illo optio sunt? Asperiores doloremque accusamus, fugit qui quae eos cumque! Distinctio hic ad
+                    et
+                    natus. Perspiciatis tempore repudiandae eos minus similique.</p>
+                  <br>
+                  <p class="title is-6 pb-1">Evan K</p>
+                  <p class="subtitle has-text-weight-light is-6">April 19th, 1:30pm</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          </a>
+        </div>
+
+      </div>
+    </section>
   </div>
 
   <!-- FIREBASE CONFIGURATION -->
