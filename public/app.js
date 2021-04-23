@@ -6,6 +6,17 @@ function change_view(id) {
 
 }
 
+// Function to make the navbar burger work when clicked on
+function bobs_burger() {
+  var burger = document.querySelector(".burger");
+  var nav = document.querySelector("#"+burger.dataset.target);
+
+  burger.addEventListener("click", () => {
+    burger.classList.toggle("is-active");
+    nav.classList.toggle("is-active");
+  })
+}
+
 // Function to check if the user is logged in and return the result
 function someone_is_logged_in() {
   var user = auth.currentUser;

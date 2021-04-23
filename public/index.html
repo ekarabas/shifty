@@ -16,13 +16,16 @@
         <img src="Branding/Rectangle Logo.png" width="112" height="28">
       </a>
 
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+      <!-- This will only activate if screen size is very narrow -->
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+        data-target="navbarBasicExample" onclick="bobs_burger()">
+        <span></span>
+        <span></span>
+        <span></span>
       </a>
     </div>
 
+    <!-- Regular navbar for wide screen-->
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="index.html">
