@@ -9,12 +9,10 @@ function change_view(id) {
 // Function to make the navbar burger work when clicked on
 function bobs_burger() {
   var burger = document.querySelector(".burger");
-  var nav = document.querySelector("#"+burger.dataset.target);
+  var nav = document.querySelector("#" + burger.dataset.target);
 
-  burger.addEventListener("click", () => {
-    burger.classList.toggle("is-active");
-    nav.classList.toggle("is-active");
-  })
+  burger.classList.toggle("is-active");
+  nav.classList.toggle("is-active");
 }
 
 // Function to check if the user is logged in and return the result
@@ -22,8 +20,7 @@ function someone_is_logged_in() {
   var user = auth.currentUser;
   if (user) {
     return true;
-  }
-  else {
+  } else {
     return false;
   }
 }
@@ -173,21 +170,58 @@ auth.onAuthStateChanged(function (user) {
   }
 })
 
-// Posting reviews, this function is called when the user clicks the "Post Review" button
+// Posting reviews, this function is called when the user clicks the "Post Review" button to open the review modal
 function open_review_modal() {
-  // Oddly, these aren't working if defined above the function declaration, so I'm declaring them within the function
+  // These aren't working if defined above the function declaration, so I'm declaring them within the function
   let review_no_login = document.querySelector("#review_no_login");
   let review_modal = document.querySelector("#review_modal");
-  
+
   if (someone_is_logged_in()) {
     // If someone is logged in, display the menu for creating a review
     review_modal.classList.add("is-active");
-  }
-  else {
-    // Tell the user they have to log in before posting a review
+  } else {
+    // Tell the user he or she has to log in before posting a review
     review_no_login.innerHTML = `You must be logged in to post reviews!`;
   }
 }
+
+// Submitting the review, this runs when the user clicks the "Submit Review" button
+let review_form = document.querySelector("#review_form");
+
+review_form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log("form submitted");
+  // Capture information from review
+  let nickname = document.querySelector("#nickname").value;
+  let snowboard_model = document.querySelector("#snowboard_model").value;
+  let snowboard_size = document.querySelector("#snowboard_size").value;
+  let rating = document.querySelector("#rating").value;
+  let review_text = document.querySelector("#review_text").value;
+
+  // Put information from the review into an object
+  let review_details = {
+    board: snowboard_model,
+    date: Date(),
+    nickname: nickname,
+    size: snowboard_size,
+    stars: rating,
+    text: review_text,
+  }
+
+  // Function thank thanks the user for their review
+  function thanks_for_review() {
+    document.querySelector("#thanks_for_review").classList.add("is-hidden");
+  }
+  // Send the review object to firebase
+  db.collection("reviews").add(review_details).then(() => {
+    review_form.reset();
+    review_modal.classList.remove("is-active");
+    document.querySelector("#thanks_for_review").classList.remove("is-hidden");
+    window.setTimeout(thanks_for_review, 10000); //Takes the thank you message away after 10 seconds
+  })
+
+})
+
 
 // Exiting the review form by clicking background
 let review_background = document.querySelector("#review_background");

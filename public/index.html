@@ -102,7 +102,7 @@
             </a>
             <!-- Appears when the user is logged in -->
             <a class="button is-white logged_in" id="logged_in_as">
-              <!-- Will show the user's email via app.js -->
+              <!-- Will show the user's email, made it a button because navbar-item doesn't center text vertically -->
             </a>
             <a class="button is-light has-text-danger logged_in" id="logout_button">
               Log out
@@ -2700,7 +2700,7 @@
       <h3 class="title is-3 has-text-centered">Review a Snowboard</h3>
       <h6 class="subtitle is-5 has-text-centered">Help other riders make informed decisions by leaving your feedback!
       </h6>
-      <form id="signup_form">
+      <form id="review_form">
         <div class="field">
           <label class="label">Nickname</label>
           <p class="control pb-2">
@@ -2723,7 +2723,7 @@
         </div>
         <label class="label">Rating (5 stars being excellent)</label>
         <div class="select pb-2">
-          <select>
+          <select id="rating">
             <option>1 Star</option>
             <option>2 Stars</option>
             <option>3 Stars</option>
@@ -2735,11 +2735,11 @@
         <br>
         <label class="label">Review</label>
         <p class="control pb-5">
-          <textarea class="textarea" placeholder="What are your thoughts about the board?"></textarea>
+          <textarea class="textarea" placeholder="What are your thoughts about the board?" id="review_text"></textarea>
         </p>
         <div class="field is-grouped">
           <p class="control">
-            <button class="button is-link">
+            <button class="button is-link" id="submit_review">
               <strong>Submit</strong>
             </button>
           </p>
@@ -2786,6 +2786,9 @@
     <!-- Reviews -->
     <section class="section">
       <div class="container">
+        <!-- This part will display temporarily after someone submits a review -->
+        <p class="has-text-centered has-text-primary pb-6 is-hidden" id="thanks_for_review">Thank you for submitting a review!</p>
+        
         <div class="columns is-centered is-variable is-multiline">
 
           <!-- Example Review -->
@@ -2803,7 +2806,6 @@
                 </div>
                 <br>
                 <div class="content">
-                  <p class="title is-4">Loved this board!</p>
                   <p class="subtitle is-6 has-text-weight-light">Lorem ipsum dolor sit amet, consectetur adipisicing
                     elit. Dolores, possimus praesentium accusantium
                     molestias quod error a maxime tenetur officiis recusandae ullam placeat labore dolorem fuga quos
