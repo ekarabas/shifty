@@ -164,7 +164,7 @@ auth.onAuthStateChanged(function (user) {
   // If user is passed, then someone is signed in
   if (user) {
     configureNav(user);
-    logged_in_as.innerHTML += `Logged in as ${user.email}`;
+    logged_in_as.innerHTML = `Logged in as ${user.email}`;
   } else {
     configureNav();
   }
@@ -172,6 +172,8 @@ auth.onAuthStateChanged(function (user) {
 
 // Posting reviews, this function is called when the user clicks the "Post Review" button to open the review modal
 function open_review_modal() {
+  document.querySelector("#review_error").innerHTML = ""; //Reset the error area
+
   // These aren't working if defined above the function declaration, so I'm declaring them within the function
   let review_no_login = document.querySelector("#review_no_login");
   let review_modal = document.querySelector("#review_modal");
@@ -184,6 +186,20 @@ function open_review_modal() {
     review_no_login.innerHTML = `You must be logged in to post reviews!`;
   }
 }
+
+// Exiting the review form by clicking background
+let review_background = document.querySelector("#review_background");
+let review_modal = document.querySelector("#review_modal");
+review_background.addEventListener("click", () => {
+  review_modal.classList.remove("is-active");
+})
+
+// Exiting the review form by clicking the "Discard" button
+let discard_review = document.querySelector("#discard_review");
+discard_review.addEventListener("click", (e) => {
+  e.preventDefault();
+  review_modal.classList.remove("is-active");
+})
 
 // Submitting the review, this runs when the user clicks the "Submit Review" button
 let review_form = document.querySelector("#review_form");
@@ -198,41 +214,66 @@ review_form.addEventListener("submit", (e) => {
   let rating = document.querySelector("#rating").value;
   let review_text = document.querySelector("#review_text").value;
 
-  // Put information from the review into an object
-  let review_details = {
-    board: snowboard_model,
-    date: Date(),
-    nickname: nickname,
-    size: snowboard_size,
-    stars: rating,
-    text: review_text,
+  // Make sure the user actually filled out the form
+  if (nickname == "" || snowboard_model == "" || snowboard_size == "" || review_text == "") {
+    document.querySelector("#review_error").innerHTML = "<p>Please fill out all of the fields!</p>";
+  } else {
+    // Put information from the review into an object
+    let review_details = {
+      board: snowboard_model,
+      date: Date().slice(0,15), //Sliced because we only want the day/month/year, not all the extra stuff
+      nickname: nickname,
+      size: snowboard_size,
+      stars: rating,
+      text: review_text,
+    }
+    // Function that thanks the user for their review (needed below)
+    function thanks_for_review() {
+      document.querySelector("#thanks_for_review").classList.add("is-hidden");
+    }
+    // Send the review object to firebase
+    db.collection("reviews").add(review_details).then(() => {
+      review_form.reset();
+      review_modal.classList.remove("is-active");
+      document.querySelector("#thanks_for_review").classList.remove("is-hidden");
+      window.setTimeout(thanks_for_review, 10000); //Removes the thank you message after 10 seconds
+    })
   }
+})
 
-  // Function thank thanks the user for their review
-  function thanks_for_review() {
-    document.querySelector("#thanks_for_review").classList.add("is-hidden");
-  }
-  // Send the review object to firebase
-  db.collection("reviews").add(review_details).then(() => {
-    review_form.reset();
-    review_modal.classList.remove("is-active");
-    document.querySelector("#thanks_for_review").classList.remove("is-hidden");
-    window.setTimeout(thanks_for_review, 10000); //Takes the thank you message away after 10 seconds
+// Populate the reviews page with reviews from the DB
+review_area.innerHTML = "";
+
+// Fetch reviews from DB
+db.collection("reviews").get().then((data) => {
+  let reviews = data.docs;
+
+  let review_area = document.querySelector("#review_area");
+
+  // Loop through the array and display each review
+  reviews.forEach((review) => {
+    review_area.innerHTML += `
+  <div class="column is-4-desktop">
+  <div class="card">
+    <div class="card-image">
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4 has-text-centered">${review.data().board}</p>
+          <p class="subtitle is-6 has-text-weight-light has-text-centered">${review.data().size}</p>
+          <img src="Misc Images/5 Stars.png">
+        </div>
+      </div>
+      <div class="content">
+        <p class="subtitle is-6 has-text-weight-light">${review.data().text}</p>
+        <br>
+        <p class="title is-6 pb-1">${review.data().nickname}</p>
+        <p class="subtitle has-text-weight-light is-6">${review.data().date}</p>
+      </div>
+    </div>
+  </div>
+</div>`
+console.log(review.data)
   })
-
-})
-
-
-// Exiting the review form by clicking background
-let review_background = document.querySelector("#review_background");
-let review_modal = document.querySelector("#review_modal");
-review_background.addEventListener("click", () => {
-  review_modal.classList.remove("is-active");
-})
-
-// Exiting the review form by clicking the "Discard" button
-let discard_review = document.querySelector("#discard_review");
-discard_review.addEventListener("click", (e) => {
-  e.preventDefault();
-  review_modal.classList.remove("is-active");
 })
