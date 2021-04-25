@@ -203,10 +203,11 @@ discard_review.addEventListener("click", (e) => {
 
 // Submitting the review, this runs when the user clicks the "Submit Review" button
 let review_form = document.querySelector("#review_form");
+let review_area = document.querySelector("#review_area");
 
 review_form.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log("form submitted");
+
   // Capture information from review
   let nickname = document.querySelector("#nickname").value;
   let snowboard_model = document.querySelector("#snowboard_model").value;
@@ -221,7 +222,7 @@ review_form.addEventListener("submit", (e) => {
     // Put information from the review into an object
     let review_details = {
       board: snowboard_model,
-      date: Date().slice(0,15), //Sliced because we only want the day/month/year, not all the extra stuff
+      date: Date().slice(0, 15), //Sliced because we only want the day/month/year, not all the extra stuff
       nickname: nickname,
       size: snowboard_size,
       stars: rating,
@@ -238,42 +239,59 @@ review_form.addEventListener("submit", (e) => {
       document.querySelector("#thanks_for_review").classList.remove("is-hidden");
       window.setTimeout(thanks_for_review, 10000); //Removes the thank you message after 10 seconds
     })
+    // Add the review to the page
+    review_area.innerHTML += `
+    <div class="column is-4-desktop">
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4 has-text-centered">${review_details.board}</p>
+            <p class="subtitle is-6 has-text-weight-light has-text-centered">${review_details.size}</p>
+            <img src="Misc Images/5 Stars.png">
+          </div>
+        </div>
+        <div class="content">
+          <p class="subtitle is-6 has-text-weight-light">${review_details.text}</p>
+          <br>
+          <p class="title is-6 pb-2">${review_details.nickname}</p>
+          <p class="subtitle has-text-weight-light is-6">${review_details.date}</p>
+        </div>
+      </div>
+    </div>
+  </div>`
   }
 })
 
+
 // Populate the reviews page with reviews from the DB
-review_area.innerHTML = "";
 
 // Fetch reviews from DB
 db.collection("reviews").get().then((data) => {
+  review_area.innerHTML = "";
   let reviews = data.docs;
 
-  let review_area = document.querySelector("#review_area");
-
-  // Loop through the array and display each review
+  // Loop through the array and display each review in DB
   reviews.forEach((review) => {
     review_area.innerHTML += `
   <div class="column is-4-desktop">
   <div class="card">
-    <div class="card-image">
-    </div>
     <div class="card-content">
       <div class="media">
         <div class="media-content">
           <p class="title is-4 has-text-centered">${review.data().board}</p>
           <p class="subtitle is-6 has-text-weight-light has-text-centered">${review.data().size}</p>
           <img src="Misc Images/5 Stars.png">
+          </div>
         </div>
-      </div>
       <div class="content">
         <p class="subtitle is-6 has-text-weight-light">${review.data().text}</p>
         <br>
-        <p class="title is-6 pb-1">${review.data().nickname}</p>
+        <p class="title is-6 pb-2">${review.data().nickname}</p>
         <p class="subtitle has-text-weight-light is-6">${review.data().date}</p>
       </div>
     </div>
   </div>
 </div>`
-console.log(review.data)
   })
 })
