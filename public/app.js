@@ -248,7 +248,7 @@ review_form.addEventListener("submit", (e) => {
           <div class="media-content">
             <p class="title is-4 has-text-centered">${review_details.board}</p>
             <p class="subtitle is-6 has-text-weight-light has-text-centered">${review_details.size}</p>
-            <img src="Misc Images/5 Stars.png">
+            <img src="Misc Images/${review_details.stars}.png">
           </div>
         </div>
         <div class="content">
@@ -281,7 +281,7 @@ db.collection("reviews").get().then((data) => {
         <div class="media-content">
           <p class="title is-4 has-text-centered">${review.data().board}</p>
           <p class="subtitle is-6 has-text-weight-light has-text-centered">${review.data().size}</p>
-          <img src="Misc Images/5 Stars.png">
+          <img src="Misc Images/${review.data().stars}.png">
           </div>
         </div>
       <div class="content">
