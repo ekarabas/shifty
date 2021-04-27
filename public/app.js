@@ -50,8 +50,6 @@ function configureNav(user) {
   }
 }
 
-
-
 // Sign up modal (inspired by example from class)
 let footer_ = document.querySelector("#footer_");
 let signup_button = document.querySelector("#signup_button");
@@ -122,7 +120,6 @@ signup_form.addEventListener("submit", (e) => {
       signup_error.innerHTML = `<p>Sign-up failed: ${error.message}</p>`;
     })
 })
-
 
 // User log in process (inspired from example in class)
 let login_form = document.querySelector("#login_form");
@@ -263,7 +260,6 @@ review_form.addEventListener("submit", (e) => {
   }
 })
 
-
 // Populate the reviews page with reviews from the DB
 
 // Fetch reviews from DB
@@ -295,3 +291,41 @@ db.collection("reviews").get().then((data) => {
 </div>`
   })
 })
+
+// Search reviews functionality
+
+
+// // search
+// let search_button = document.querySelector("#search_button");
+
+// // attach a click event
+// search_button.addEventListener("click", () => {
+
+//   // grab the content of the input in search box
+//   let search_box = document.querySelector("#search_box").value;
+
+//   // grab the customized data from firebase
+//   db.collection("recipes").where("title", "==", search_box.get().then((data) => {
+
+//     // retrieve recipes data from firebase
+//     db.collections("recipes").get().then((data) => {
+
+//       let recipes = data.docs;
+//       content.innerHTML = "";
+
+//       // loop through the array
+//       recipes.forEach((recipe) => {
+//         content.innerHTML += `
+//         <div class="box">
+//           <h1 class="title is-size-3 p-2">${recipe.data().title}</h1>
+//           <p>${recipe.data().desc}</p>
+//         </div>
+//         `;
+//       })
+//     })
+
+//   }))
+
+//   // search in firebase firestore for recipes with a title similar to what is in the box above
+
+// })

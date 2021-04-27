@@ -2768,35 +2768,55 @@
           Share your experiences with other riders. Let's help each other find the perfect deck.
         </p>
         <br>
-        <div class="buttons is-centered">
-          <p class="control">
-            <!-- Using a function to detect a click on this button because addEventListener wasn't working -->
-            <button class="button is-light has-text-link" id="review_button" onclick="open_review_modal();">
-              Post a Review
-            </button>
-          </p>
+        <div class="level-item has-text-centered">
+          <div class="buttons is-centered">
+            <p class="control">
+              <!-- Using a function to detect a click on this button because addEventListener wasn't working -->
+              <button class="button is-light has-text-link" id="review_button" onclick="open_review_modal();">
+                Post a Review
+              </button>
+            </p>
+          </div>
         </div>
-        <!-- Will tell the user that a login is required for posting reviews, if the user isn't logged in -->
-        <p class="has-text-centered has-text-white" id="review_no_login">
-
-        </p>
-      </div>
-    </section>
-
-    <!-- Reviews -->
-    <section class="section">
-      <div class="container">
-        <!-- This part will display temporarily after someone submits a review -->
-        <p class="has-text-centered has-text-primary pb-6 is-hidden" id="thanks_for_review">Thank you for submitting a review!</p>
-        
-        <div class="columns is-centered is-variable is-multiline" id="review_area">
-
-          <!-- Reviews will go here once Javascript adds them -->
-
+        <br>
+        <div class="level-item has-text-centered">
+          <div class="field has-addons">
+            <p class="control">
+              <input class="input" type="text" placeholder="Find a review" id="search_input">
+            </p>
+            <p class="control">
+              <button class="button has-text-link" id="search_button">
+                Search
+              </button>
+            </p>
+          </div>
         </div>
 
       </div>
-    </section>
+
+
+      <!-- Will tell the user that a login is required for posting reviews, if the user isn't logged in -->
+      <p class="has-text-centered has-text-white" id="review_no_login">
+
+      </p>
+  </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="section">
+    <div class="container">
+      <!-- This part will display temporarily after someone submits a review -->
+      <p class="has-text-centered has-text-primary pb-6 is-hidden" id="thanks_for_review">Thank you for submitting a
+        review!</p>
+
+      <div class="columns is-centered is-variable is-multiline" id="review_area">
+
+        <!-- Reviews will go here once Javascript adds them -->
+
+      </div>
+
+    </div>
+  </section>
   </div>
 
   <!-- FIREBASE CONFIGURATION -->
