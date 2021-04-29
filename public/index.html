@@ -2785,38 +2785,30 @@
               <input class="input" type="text" placeholder="Find a review" id="search_input">
             </p>
             <p class="control">
-              <button class="button has-text-link" id="search_button">
+              <button class="button has-text-link" id="search_button" onclick="search_reviews();">
                 Search
               </button>
             </p>
           </div>
         </div>
-
       </div>
-
 
       <!-- Will tell the user that a login is required for posting reviews, if the user isn't logged in -->
       <p class="has-text-centered has-text-white" id="review_no_login">
-
       </p>
-  </div>
-  </section>
+    </section>
 
-  <!-- Reviews -->
-  <section class="section">
-    <div class="container">
-      <!-- This part will display temporarily after someone submits a review -->
-      <p class="has-text-centered has-text-primary pb-6 is-hidden" id="thanks_for_review">Thank you for submitting a
-        review!</p>
-
-      <div class="columns is-centered is-variable is-multiline" id="review_area">
-
-        <!-- Reviews will go here once Javascript adds them -->
-
+    <!-- Reviews -->
+    <section class="section">
+      <div class="container">
+        <!-- This part will display temporarily after someone submits a review -->
+        <p class="has-text-centered has-text-primary pb-6 is-hidden" id="thanks_for_review">Thank you for submitting a
+          review!</p>
+        <div class="columns is-centered is-variable is-multiline" id="review_area">
+          <!-- Reviews will go here once Javascript adds them -->
+        </div>
       </div>
-
-    </div>
-  </section>
+    </section>
   </div>
 
   <!-- FIREBASE CONFIGURATION -->

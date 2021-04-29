@@ -256,7 +256,7 @@ review_form.addEventListener("submit", (e) => {
         </div>
       </div>
     </div>
-  </div>`
+  </div>`;
   }
 })
 
@@ -288,44 +288,45 @@ db.collection("reviews").get().then((data) => {
       </div>
     </div>
   </div>
-</div>`
+</div>`;
   })
 })
 
 // Search reviews functionality
+function search_reviews() {
+  let search_input = document.querySelector("#search_input").value;
+  console.log("clicked");
 
+  // Find the entries in firebase that correspond to the user's search
+  db.collection("reviews").where("board", "==", search_input).get().then((data) => {
+    console.log("hello");
 
-// // search
-// let search_button = document.querySelector("#search_button");
+    // Clear the review area
+    review_area.innerHTML = "";
+    let reviews = data.docs;
 
-// // attach a click event
-// search_button.addEventListener("click", () => {
-
-//   // grab the content of the input in search box
-//   let search_box = document.querySelector("#search_box").value;
-
-//   // grab the customized data from firebase
-//   db.collection("recipes").where("title", "==", search_box.get().then((data) => {
-
-//     // retrieve recipes data from firebase
-//     db.collections("recipes").get().then((data) => {
-
-//       let recipes = data.docs;
-//       content.innerHTML = "";
-
-//       // loop through the array
-//       recipes.forEach((recipe) => {
-//         content.innerHTML += `
-//         <div class="box">
-//           <h1 class="title is-size-3 p-2">${recipe.data().title}</h1>
-//           <p>${recipe.data().desc}</p>
-//         </div>
-//         `;
-//       })
-//     })
-
-//   }))
-
-//   // search in firebase firestore for recipes with a title similar to what is in the box above
-
-// })
+    // Loop through the array and print matching entries to the page
+    reviews.forEach((review) => {
+      review_area.innerHTML += `
+      <div class="column is-4-desktop">
+      <div class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4 has-text-centered">${review.data().board}</p>
+              <p class="subtitle is-6 has-text-weight-light has-text-centered">${review.data().size}</p>
+              <img src="Misc Images/${review.data().stars}.png">
+              </div>
+            </div>
+          <div class="content">
+            <p class="subtitle is-6 has-text-weight-light">${review.data().text}</p>
+            <br>
+            <p class="title is-6 pb-2">${review.data().nickname}</p>
+            <p class="subtitle has-text-weight-light is-6">${review.data().date}</p>
+          </div>
+        </div>
+      </div>
+    </div>`;
+    })
+  })
+}
