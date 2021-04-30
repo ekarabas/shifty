@@ -155,18 +155,6 @@ logout_button.addEventListener("click", () => {
   auth.signOut();
 })
 
-// Check if user is logged in or out and update the navbar accordingly
-// This should be at the end of the js file
-auth.onAuthStateChanged(function (user) {
-  // If user is passed, then someone is signed in
-  if (user) {
-    configureNav(user);
-    logged_in_as.innerHTML = `Logged in as ${user.email}`;
-  } else {
-    configureNav();
-  }
-})
-
 // Posting reviews, this function is called when the user clicks the "Post Review" button to open the review modal
 function open_review_modal() {
   document.querySelector("#review_error").innerHTML = ""; //Reset the error area
@@ -261,8 +249,6 @@ review_form.addEventListener("submit", (e) => {
 })
 
 // Populate the reviews page with reviews from the DB
-
-// Fetch reviews from DB
 db.collection("reviews").get().then((data) => {
   review_area.innerHTML = "";
   let reviews = data.docs;
@@ -293,21 +279,55 @@ db.collection("reviews").get().then((data) => {
 })
 
 // Search reviews functionality
-function search_reviews() {
-  let search_input = document.querySelector("#search_input").value;
-  console.log("clicked");
+function sort_reviews() {
+  let sort_input = document.querySelector("#sort_input").value;
+  console.log("sorting");
+  console.log(sort_input);
+
+  // If "All Reviews" is selected, print every review
+  if (sort_input == "All Reviews") {
+    db.collection("reviews").get().then((data) => {
+      document.querySelector("#review_area").innerHTML = "";
+      let reviews = data.docs;
+
+      // Loop through the array and display each review in DB
+      reviews.forEach((review) => {
+        document.querySelector("#review_area").innerHTML += `
+      <div class="column is-4-desktop">
+      <div class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4 has-text-centered">${review.data().board}</p>
+              <p class="subtitle is-6 has-text-weight-light has-text-centered">${review.data().size}</p>
+              <img src="Misc Images/${review.data().stars}.png">
+              </div>
+            </div>
+          <div class="content">
+            <p class="subtitle is-6 has-text-weight-light">${review.data().text}</p>
+            <br>
+            <p class="title is-6 pb-2">${review.data().nickname}</p>
+            <p class="subtitle has-text-weight-light is-6">${review.data().date}</p>
+          </div>
+        </div>
+      </div>
+    </div>`;
+      })
+    })
+    return;
+  }
 
   // Find the entries in firebase that correspond to the user's search
-  db.collection("reviews").where("board", "==", search_input).get().then((data) => {
-    console.log("hello");
+  db.collection("reviews").where("stars", "==", sort_input).get().then((data) => {
 
     // Clear the review area
-    review_area.innerHTML = "";
+    document.querySelector("#review_area").innerHTML = ""; // It seems that variables defined earlier like review_area do not work within functions
     let reviews = data.docs;
+    review_area.innerHTML = "";
 
     // Loop through the array and print matching entries to the page
     reviews.forEach((review) => {
-      review_area.innerHTML += `
+      document.querySelector("#review_area").innerHTML += `
       <div class="column is-4-desktop">
       <div class="card">
         <div class="card-content">
@@ -330,3 +350,14 @@ function search_reviews() {
     })
   })
 }
+
+// Check if user is logged in or out and update the navbar accordingly
+auth.onAuthStateChanged(function (user) {
+  // If user is passed, then someone is signed in
+  if (user) {
+    configureNav(user);
+    logged_in_as.innerHTML = `Logged in as ${user.email}`;
+  } else {
+    configureNav();
+  }
+})
